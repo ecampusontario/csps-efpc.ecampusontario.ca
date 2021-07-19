@@ -1,0 +1,23 @@
+/**
+ * @file
+ * Base Theme Animations File
+ * Collects useful CSS animations (i.e. @keyframes statements).
+ * Most animations should be placed in the _0_local_animations.sass file to avoid loading unused statements.
+ */
+
+@keyframes build
+  from
+    opacity: 0
+  to
+    opacity: 1
+    
+@keyframes pulse
+  0%
+    opacity: 0.5
+    transform: scale(1, 1)
+  50%
+    opacity: 1
+    transform: scale(1.1, 1.1)
+  100%
+    opacity: 0.5
+    transform: scale(1, 1)

@@ -1,0 +1,63 @@
+/* USAGE NOTE
+   This file defines settings and variables for a local theme. 
+   
+   This follows a numbering system to make the build order clear (and match the file order in the directory).
+   Core, vendor and CMS-specific extension support are separated for portability.
+   The numbering system is as follows:
+   
+   0. Configuration files, vendor dependencies and mixins.
+   1. Structural and typographical styles that need to be loaded early in the build.
+   2. CMS-specific extensions, e.g. Drupal module support. See note below.
+   3. Theme-specific styles. Last in the build order. */
+
+
+/* !0. VENDOR DEPENDENCIES AND SETUP  */
+// Third party libraries required for this theme. Some are compiled with IDEs ()
+
+@import "vendor/_bourbon"
+
+//  NOTE: Codekit’s Compass build may have to be edited to avoid compilation warnings. See comment on https://github.com/Compass/compass/issues/2052 for fix.
+   
+/* !0. SETTINGS (LOCAL)  */
+// Core and local settings
+
+@import "base/_0_base_config"
+@import "local/_0_local_config"
+
+
+/* !0. MIXINS AND STANDARDIZED ELEMENTS */
+@import "base/_0_base_mixins"
+@import "local/_0_local_mixins"
+@import "base/_0_base_standardized_features.sass"
+@import "base/_0_base_animations.sass"
+@import "local/_0_local_animations.sass"
+
+
+/* !1. STRUCTURE AND TYPOGRAPHY */
+// Base rules are the defaults. They are almost exclusively single element selectors but it could include attribute selectors, pseudo-class selectors, child selectors or sibling selectors. Essentially, a base style says that wherever this element is on the page, it should look like this.
+
+@import "base/_1_base_structure"
+@import "local/_1_local_structure"
+
+@import "base/_1_base_typography"
+@import "local/_1_local_typography"
+
+
+/* !0. VENDORS AND EXTENSIONS */
+// Add styles to support extensions and modules.
+
+@import "local/_2_discovery"
+
+
+/* !2. LOCAL THEME AND TEMPORARY STYLES        */
+// Styles specific to this theme, or temporary files for hotfixes and development tests.
+
+@import "local/_2_local_theme"
+
+/* !3. EXTENSION SUPPORT */
+/* Styles specific to CMS extensions (such as Drupal modules or Wordpress plugins). NOTE: The subdirectory structure provides a separate “extensions” folder in case there are module-specific SASS styles intended for portability to other themes. This is likely an edge case, as extension-specific CSS should be bundled in and loaded with the extension. Otherwise, extension style overrides should be placed in local local folder, numbered _2_ for visibility. */
+
+
+/* Stylers be not proud */
+
+@import "local/_3_local_temp"

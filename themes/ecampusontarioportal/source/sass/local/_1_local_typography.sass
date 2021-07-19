@@ -1,0 +1,29 @@
+/**
+ * @file
+ * Local Typography
+ * Redefinitions of base HTML tags for easier responsive design.
+ */
+    
++font-face('Frutiger LT Std', $asset-base-path + '/fonts/FrutigerLTStd-Light')
++font-face('Frutiger LT Std Italic', $asset-base-path + '/fonts/FrutigerLTStd-LightItalic','normal','italic')
++font-face('Frutiger LT Std Roman', $asset-base-path + '/fonts/FrutigerLTStd-Roman')
++font-face('Frutiger LT Std Roman Italic', $asset-base-path + '/fonts/FrutigerLTStd-Italic','normal','italic')
++font-face('Frutiger LT Std Bold', $asset-base-path + '/fonts/FrutigerLTStd-Bold','bold')
++font-face('Frutiger LT Std Bold Italic', $asset-base-path + '/fonts/FrutigerLTStd-BoldItalic','bold','italic')
+
+$basefont: 'Frutiger LT Std', Tahoma, Helvetica, Arial, sans-serif
+$headingfont: 'Frutiger LT Std Roman', Tahoma, Helvetica, Arial, sans-serif
+$boldface: 'Frutiger LT Std Bold', Tahoma, Helvetica, Arial, sans-serif
+
+    
+html
+  font-family: $basefont
+  
+  +bp(sml)
+    font-size: 60%
+  +bp(med)
+    font-size: 100%
+
+h1, h2, h3, h4, h5, h6
+  font-family: $headingfont
+  letter-spacing: 0.05em

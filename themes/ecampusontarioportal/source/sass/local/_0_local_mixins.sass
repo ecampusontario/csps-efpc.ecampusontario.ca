@@ -1,0 +1,103 @@
+/**
+ * @file _1_local_mixins.sass
+ * Theme-specific Mixins
+ */
+
+=font-face($family, $path, $weight: normal, $style: normal)
+  @font-face
+    font-family: $family
+    src: url('#{$path}.eot')
+    src: url('#{$path}.eot?#iefix') format('embedded-opentype'), url('#{$path}.woff') format('woff'), url('#{$path}.ttf') format('truetype')
+    font-weight: $weight
+    font-style: $style
+
+=font-size($font-size: 16,$unit: em)
+  font-size: #{$font-size}#{$unit}
+  
+// Standardized Footer
+=standardized-footer()
+  box-sizing: border-box
+  background-color: $black
+  color: $white
+  font-weight: normal 
+  width: 100%
+  background-repeat: no-repeat
+  padding: $blh $blh/2
+  
+  +bp(med)
+    min-height: $blh * 10
+    background-position: $blh $blh
+    padding: $blh
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: flex-start
+    
+    > *
+      width: 100%
+      
+      +bp(med)
+        width: 33.33%
+          
+    +bp(med)
+      padding-top: 0px
+
+  a 
+    color: $white
+    
+  ul.menu
+    margin: 0
+    
+    li
+      text-align: center
+      
+      +bp(med)
+        text-align: left
+    
+    li:first-child
+      margin-top: 0
+      padding-top: 0
+    
+    a
+      text-transform: uppercase
+      text-decoration: none
+  
+  .region-content
+    padding-top: $blh
+    
+    +bp(med)
+      padding-top: 1em
+  
+  .contact-info
+    padding-top: 1em
+    text-align: center
+    
+    +bp(med)
+      text-align: left
+
+// Standardized Footer Region
+
+=standardized-footer-region
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: flex-start
+  
+  padding: $blh*2
+  
+  +bp(med)
+    padding-left: 400px
+  
+  > section
+    padding-top: $blh
+    width: 100%
+    
+    +bp(med)
+      padding-top: 0
+      width: 66.666%
+    
+  > section:last-child
+    width: 100%
+    
+    +bp(med)
+      width: 66.666%

@@ -1,0 +1,328 @@
+/**
+ * @file _0_base_mixins.sass
+ * Useful tools and common elements
+ */
+
+=multicolumn($columns: 2)
+  -webkit-column-count: $columns
+  -moz-column-count: $columns
+  column-count: $columns
+  
+=coverer
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+=center 
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+=vertical-align
+  position: relative
+  top: 50%
+  -webkit-transform: translateY(-50%)
+  -ms-transform: translateY(-50%)
+  transform: translateY(-50%)
+
+=ellipsis
+  overflow: hidden
+  white-space: nowrap
+  text-overflow: ellipsis
+  
+
+@function black($opacity)
+  @return rgba(black, $opacity)
+
+@function white($opacity)
+  @return rgba(white, $opacity)
+
+// Typography ------------------------------
+
+@mixin word-wrap()
+  word-break:     break-word
+  -webkit-hyphens: auto
+  -moz-hyphens:    auto
+  hyphens:         auto
+
+=font-size($font-size: 16,$unit: px)
+  font-size: #{$font-size}#{$unit}
+  
+=line-height($line-height: 1)
+  line-height: #{$line-height}em
+
+=css-hyphens($val:auto)
+  -webkit-hyphens: $val
+  -moz-hyphens: $val
+  -ms-hyphens: $val
+  -o-hyphens: $val
+  hyphens: $val
+
+=smallcaps($color, $font-weight)
+  font-variant: small-caps
+  font-weight: $font-weight
+  text-transform: lowercase
+  color: $color
+
+%bg_clr1
+  background: $clr1
+
+%bg_clr2
+  background: $clr2
+
+%bg_clr3
+  background: $clr3
+
+%bg_clr4
+  background: $clr4
+
+%bg_clr5
+  background: $clr5
+  
+// Circle
+= circle($size)
+  display: block
+  border-radius: 50%
+  width: $size
+  height: $size
+  -webkit-border-radius: 50%
+  -moz-border-radius: 50%
+
+// Inline Block
+
+=inline_block
+  display: inline-block
+  vertical-align: baseline
+  zoom: 1
+  *display: inline
+  *vertical-align: auto
+
+// Inline List
+%inline_list
+  list-style-type: none
+  margin-left: 0
+
+  & > li
+    display: inline-block
+
+// Breakpoints for Media Queries ------------------------------
+
+=bp($point)
+
+  @if $point == xxsml
+    @media only #{$media_type} and ($feature: map-get($breakpoints,'xsml') - 5em)
+      @content
+
+  @else if $point == xsml
+    @media only #{$media_type} and ($feature: map-get($breakpoints,'xsml'))
+      @content
+
+  @else if $point == sml
+    @media only #{$media_type} and ($feature: map-get($breakpoints,'sml'))
+      @content
+
+  @else if $point == med
+    @media only #{$media_type} and ($feature: map-get($breakpoints,'med'))
+      @content
+
+  @else if $point == lrg
+    @media only #{$media_type} and ($feature: map-get($breakpoints,'lrg'))
+      @content
+
+  @else if $point == xlrg
+    @media only #{$media_type} and ($feature: map-get($breakpoints,'xlrg'))
+      @content
+
+  @else if $point == xxlrg
+    @media only #{$media_type} and ($feature: map-get($breakpoints,'xlrg') + 20em)
+      @content
+
+  @else if $point == 2x
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5)
+      @content
+
+
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
+// Horizontal / Navigation List. A replacement for the Compass version
+
+@mixin horizontal-list($list-margin: 0 8px 0 0) 
+  display: inline-block
+  position: relative
+  margin: 0
+  padding: 0
+  
+  li
+    display: inline-block
+    position: relative
+    margin: $list-margin
+    padding: 0
+    
+    &:last-of-type 
+      margin-right: 0
+    a 
+      display: inline-block
+    
+  
+// Mobile navigation boilerplate
+
+=topnav-pulldown($top:50px,$radius:0px,$index:10)
+  position: absolute
+  width: 100%
+  display: none
+  float: left
+  top: $top
+  box-sizing: border-box
+  padding: $blh
+  border-radius: $radius
+  background-color: $dark_neutral
+  z-index: $index
+
+  .close_btn
+    float: right
+    position: absolute
+    top: $blh * 3
+    right: $blh
+    
+    +bp(sml)
+      top: $blh*2.5
+    
+  .livicon
+    float: right
+    margin: -2px 0 0 5px
+    +bp(sml)
+      margin: 2px 0 0 5px
+      
+// Buttons
+
+%btn-base
+  +inline-block
+  padding: $btn_padding
+  font-weight: $normalfw
+  +font-size($buttonfontsize)
+  line-height: $blh
+  text-align: center
+  vertical-align: middle
+  border: $btn_border_width solid $btn_border_color
+  background-clip: border-box
+  cursor: pointer
+
+  &:hover, &:focus
+    text-decoration: none
+        
+%btn
+  @extend %btn-base
+  color: $btn_color
+  background-color: $btn_bg_color
+  border: $btn_border_width solid $btn_border_color
+  &:hover, &:focus, &:active
+    background-color: $btn_hover_bg_color
+    color: $btn_hover_color
+    
+%btn-submit
+  @extend %btn-base
+  color: $btn_submit_color
+  background-color: $btn_submit_bg_color
+  border: $btn_border_width solid $btn_submit_border_color
+  &:hover, &:focus, &:active
+    background-color: $btn_submit_hover_bg_color
+    color: $btn_submit_hover_color
+
+%btn-reset
+  @extend %btn-base
+  color: $dark_neutral
+  background-color: $white
+  border: $btn_border_width solid $dark_neutral
+  &:hover, &:focus, &:active
+    background-color: $dark_neutral
+    color: $btn_hover_color      
+  
+// spinner 
+
+=spinner($color:rgba(0, 0, 0, 0.75))
+  &:after
+    content: ""
+    width: 5em
+    height: 5em
+    position: absolute
+    top: 0 
+    bottom: 0
+    right: 0
+    left: 0
+    margin: auto
+    border-top: 0.5rem solid $color
+    border-right: 0.25rem solid transparent
+    border-left: 0.5rem solid $color
+    border-radius: 50%
+    animation: spin 1.5s infinite linear
+  
+  @keyframes spin
+    100%
+      transform: rotate(360deg)
+      
+// Heading Line Height
+
+=get-line-height($h)
+  $lh: map-get($lineheightfactors,$h)
+  line-height: #{$lh}em
+  
+// Box Shadow
+
+=box-shadow($h: 10px , $v: 10px , $b: 0px , $s: 0px , $c: #000000)
+  -webkit-box-shadow: $h $v $b $s $c
+  -moz-box-shadow: $h $v $b $s $c
+  box-shadow: $h $v $b $s $c
+
+// Triangle
+
+@mixin triangle ($size, $color, $direction)
+  height: 0
+  width: 0
+
+  @if ($direction == up) or ($direction == down) or ($direction == right) or ($direction == left)
+    border-color: transparent
+    border-style: solid
+    border-width: $size / 2
+
+    @if $direction == up
+      border-bottom-color: $color
+
+    @else if $direction == right
+      border-left-color:   $color
+
+    @else if $direction == down
+      border-top-color:    $color
+
+    @else if $direction == left
+      border-right-color:  $color
+
+  @else if ($direction == up-right) or ($direction == up-left)
+    border-top: $size solid $color
+
+    @if $direction == up-right
+      border-left:  $size solid transparent
+
+    @else if $direction == up-left
+      border-right: $size solid transparent
+
+  @else if ($direction == down-right) or ($direction == down-left)
+    border-bottom: $size solid $color
+
+    @if $direction == down-right
+      border-left:  $size solid transparent
+
+    @else if $direction == down-left
+      border-right: $size solid transparent
+      
+      

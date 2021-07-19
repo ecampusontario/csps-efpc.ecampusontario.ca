@@ -1,0 +1,205 @@
+/**
+ * @file
+ * A series of standardized elements for possible inclusion in a local theme.
+ * Elements presented as mixins so keep the base theme lightweight. This also allows the SASS compiler
+ * to use local theme variables.
+ */
+
+// Standardized Header
+
+=standardized-topnav()
+  nav
+    +vertical-align
+    display: none
+    
+    +bp(med)
+      display: block
+  
+  ul.menu
+    +horizontal-list
+    
+    li
+      font-size: 0.8em
+      text-transform: uppercase
+      font-weight: $normalfw
+      padding-left: $blh
+    
+    a
+      color: $white
+      text-decoration: none
+      
+      &.is-active
+        font-weight: $boldfw
+
+=standardized-header()
+  width: 100%
+  height: 60px
+  background-color: $black
+  padding: 10px $blh
+  
+  +bp(med)
+    padding: 10px $outer_padding
+
+  .logo
+    float: left
+    
+    img
+      height: 40px
+  
+  .region-content
+    float: right
+    height: 40px
+  
+    +standardized-topnav()
+
+    
+
+// Standardized Mobile Nav
+
+=standardized-mobile-nav()
+  position: relative
+  top: 6px
+  right: 0
+  text-align: right
+
+  +bp(med)
+    display: none
+
+// Standardized Mobile Nav Block (The pull-down menu)
+
+=standardized-mobile-nav-block()
+  +topnav-pulldown(60px)
+  border-top: 2px solid $white
+  background-color: $neutral
+  display: none
+  padding-top: $blh * 2
+  
+  .close_btn
+    position: relative
+    top: $blh * -1.5
+    right: 0
+
+  ul
+    padding: 0
+    margin: 0
+    
+  ul.menu li
+    margin: 0 0 $blh/4 0
+    
+  li
+    list-style-type: none
+    display: block
+    width: 100%
+    text-transform: uppercase
+    color: $white
+    background-color: $lighter_neutral
+    box-sizing: border-box
+    font-weight: $normalfw
+    padding: 0 0 0 $blh/4
+    
+    &:hover
+      background-color: $light_neutral
+              
+    a
+      display: block
+      width: 100%
+      height: 100%
+      box-sizing: border-box
+      padding: $blh/4
+      text-decoration: none
+      color: $white
+      
+      &:hover
+        text-decoration: none
+        
+      &.is-active
+        color: $white
+
+
+// Standardized Footer
+=standardized-footer()
+  box-sizing: border-box
+  background-color: $black
+  color: $white
+  font-weight: normal 
+  width: 100%
+  background-repeat: no-repeat
+  padding: $blh $blh/2
+  
+  +bp(med)
+    min-height: $blh * 10
+    background-position: $blh $blh
+    padding: $blh $blh $blh 250px
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: flex-start
+    
+    > *
+      width: 100%
+      
+      +bp(med)
+        width: 33.33%
+          
+    +bp(med)
+      padding-top: 0px
+
+  a 
+    color: $white
+    
+  ul.menu
+    margin: 0
+    
+    li
+      text-align: center
+      
+      +bp(med)
+        text-align: left
+    
+    li:first-child
+      margin-top: 0
+      padding-top: 0
+    
+    a
+      text-transform: uppercase
+      text-decoration: none
+  
+  .region-content
+    padding-top: $blh
+    
+    +bp(med)
+      padding-top: 1em
+  
+  .contact-info
+    padding-top: 1em
+    text-align: center
+    
+    +bp(med)
+      text-align: left
+
+// Standardized Footer Region
+
+=standardized-footer-region
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: flex-start
+  
+  padding: $blh
+  
+  +bp(med)
+    padding-left: 400px
+  
+  > section
+    padding-top: $blh
+    width: 100%
+    
+    +bp(med)
+      padding-top: 0
+      width: 66.666%
+    
+  > section:last-child
+    width: 100%
+    
+    +bp(med)
+      width: 66.666%

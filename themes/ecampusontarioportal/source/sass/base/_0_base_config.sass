@@ -1,0 +1,126 @@
+/**
+ * @file
+ * Base Theme Configuration File
+ * It is best to copy this file as _0_local_config.sass and provide site-specific values
+ */
+
+/* !CORE VALUES */
+
+$blh: 1.5em  // baseline height
+$media_type: screen
+$feature: min-width
+$max_width: 1200px
+
+
+/* !COLOUR
+
+// Define your design’s palette by choosing the main colours */
+
+$clr1: #ABABAB
+$clr2: #EFEFEF
+$clr3: #333333
+$clr4: #222222
+$clr5: #111111
+$clr6: #000000
+
+// Define alternative blackpoint, whitepoint and neutrals.
+
+$black: black
+$white: white
+$neutral: #DEDEDE
+$impact: #FF0000
+
+$lightest_neutral: mix($black,$white, 6%)
+$lighter_neutral: mix($black,$white, 15%)
+$light_neutral: mix($black,$white, 25%)
+
+$mid_neutral: mix($black,$white, 55%)
+$dark_neutral: mix($black,$white, 65%)
+$darker_neutral: mix($black,$white, 90%)
+
+
+/* !BREAKPOINTS */
+
+    
+/*  Values for your responsive design breakpoints. This has now been rethought 
+    thanks to https://medium.freecodecamp.com/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862#.rduwqht4g
+  
+  336px 	  21em       xsml
+  600px 	  37.5em     sml
+  900px 	  56.25      med
+  1200px    75em       lrg
+  1800px	  100em      xlrg   */
+  
+$breakpoints: (xsml: 21em, sml: 30em, med: 56.25em, lrg: 75em, xlrg: 112.5em)
+
+/* !GRID (SUSY) */
+
+$outer_padding: $blh
+$region_min_height: $blh * 3
+
+$total_columns  : 12
+$gutter_width   : 1/4
+$container_style: fluid
+
+$susy: (flow: ltr, math: $container_style, output: float, gutter-position: after, container: auto, container-position: center, columns: $total_columns, gutters: $gutter_width, column-width: false, global-box-sizing: content-box, last-flow: to)
+
+
+/* !TYPOGRAPHY */
+
+$basefont: Tahoma, Helvetica, Arial, sans-serif
+$headingfont: Tahoma, Helvetica, Arial, sans-serif
+$altfont: Georgia, serif
+$codefont: "Andale Mono", Monaco, Courier New, monospace
+
+$lightfw: 100
+$normalfw: 300
+$semiboldfw: 700
+$boldfw: 900
+$blackfw: 1000
+
+$basefontsize: 15
+
+$tabsize: 1em
+
+// A mixin creates line heights based on the factor here. 1.2 for standard, 1.5 for line-and-a-half, 2 for double space)
+
+$lineheightfactors: (base: 1.2, alt: 1.35, h1: 1.2, h2: 1.2, h3: 1.2, h4: 1.2, h5: 1.2, h6: 1.2)
+
+// Headers
+
+$headingfw: $boldfw
+
+$h1fontsize: $basefontsize * 3
+$h2fontsize: $basefontsize * 2.25
+$h3fontsize: $basefontsize * 1.875
+$h4fontsize: $basefontsize * 1.5
+$h5fontsize: $basefontsize * 1.25
+$h6fontsize: $basefontsize * 1.125
+
+
+/* !UI STANDARDIZATION */
+
+$border_radius: 10px
+
+// Buttons
+
+$buttonfontsize: $basefontsize
+
+$btn_padding: $blh*0.4 $blh*0.6 $blh*0.4 $blh*0.6
+$btn_border_width: 0px
+$btn_border_radius: $border_radius * 0.25
+
+$btn_color: $white
+$btn_bg_color: $lightest_neutral
+$btn_border_color: darken($btn_bg_color,10%)
+$btn_hover_color: darken($btn_bg_color,20%)
+$btn_hover_bg_color: $black
+
+$btn_submit_color: $white
+$btn_submit_bg_color: $impact
+$btn_submit_border_color: darken($btn_submit_bg_color,10%)
+$btn_submit_hover_bg_color: darken($btn_submit_bg_color,20%)
+$btn_submit_hover_color: $white
+
+
+

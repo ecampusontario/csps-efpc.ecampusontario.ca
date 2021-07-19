@@ -1,0 +1,138 @@
+/**
+ * @file
+ * Base Structure
+ * Defines ids and classes to support a basic grid.
+ *
+ * Version 1.1: Replaces SUSY dependency with Flexbox
+ */
+
+
+/* !VIEWPORT SETUP */
+
+@-webkit-viewport
+  width: device-width
+
+@-moz-viewport
+  width: device-width
+
+@-ms-viewport
+  width: device-width
+
+@-o-viewport
+  width: device-width
+
+@viewport
+  width: device-width
+  
+/* SVG Support */
+
+// hides image embedded for backwards compatibility
+
+.svg-wrap > img
+  display: none  
+  
+
+/* !TEMPLATING RULES */
+
+body.show-grid .region
+  border: 1px solid red
+  box-sizing: border-box
+
+body.show-grid .region
+  min-height: $region_min_height
+  box-sizing: border-box
+
+body.show-grid div.region
+  border: 1px dotted green
+
+body.show-grid aside.region
+  border: 1px dotted blue
+  
+  
+/* !BASIC STRUCTURE */
+
+html, body
+  height: 100%
+
+body
+  padding: 0
+  margin: 0
+  
+section
+  overflow: hidden
+
+div, aside, nav, article, section, header
+  box-sizing: border-box
+  
+/* MOBILE */
+
+#mobile-header-nav
+  display: block
+  
+  +bp(med)
+    display: none
+    
+#mobile-nav-block
+  display: none
+  
+/* ! Sticky Header Class */
+
+.sticky
+  position: fixed
+  top: 0
+  
+.sticky-mobile
+  position: fixed
+  top: 0
+  
+  +bp(med)
+    position: initial
+    top: initial
+  
+/* !BASIC GRID RULES */
+  
+/* 
+  First-level blocks are for meta-structure (overlays, Drupal admin toolbar, etc.). 
+  The second level is the “page”. 
+  Third-level are regions, which span the full width. 
+  Fourth-level blocks are limited to the max-width. */
+  
+#content-area, header
+  margin: 0 auto
+  
+  +bp(med)
+    max-width: $max_width
+  
+.region
+  margin-top: 0
+  margin-bottom: 0
+  
+.region > *
+  padding: $outer_padding/2
+  margin: 0 auto
+  
+  +bp(med)
+    padding: $outer_padding
+    max-width: $max_width
+
+  +bp(xlrg)
+    padding: $blh 0
+
+    
+.region > *
+  display: flex
+  flex-direction: column
+  flex-wrap: nowrap
+  justify-content: space-between
+  
+  +bp(med)
+    flex-direction: row
+   
+  > aside  
+  
+    +bp(med)
+      flex-shrink: 0
+      width: 37%
+  
+  > div
+    flex-grow: 1 

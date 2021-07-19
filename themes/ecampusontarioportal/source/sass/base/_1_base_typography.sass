@@ -1,0 +1,356 @@
+/**
+ * @file
+ * Typography
+ * Redefinitions of base HTML tags for easier responsive design.
+ */
+
+
+// Font Scaling ------------------------------
+
+html
+  font-family: $basefont
+  color: $black
+  font-size: 38.5%
+  
+  +bp(sml)
+    font-size: 52.5%
+    
+  +bp(lrg)
+    font-size: 100%
+
+// HEADINGS ------------------------------
+
+h1, h2, h3, h4, h5, h6
+  margin: $blh*.25 0
+  color: $black
+  font-family: $headingfont
+  font-weight: $headingfw
+
+h1, .h1
+  +get-line-height(h1)
+  +font-size($h1fontsize)
+  margin: $blh*.125 0 
+
+h2, .h2
+  +get-line-height(h2)
+  +font-size($h2fontsize)
+  margin: $blh*.125 0
+
+h3, .h3, %h3
+  +get-line-height(h3)
+  +font-size($h3fontsize)
+  margin: 0
+
+h4, .h4
+  +get-line-height(h4)
+  +font-size($h4fontsize)
+  margin: 0
+
+h5, .h5
+  +get-line-height(h5)
+  +font-size($h5fontsize)
+  margin: 0
+
+h6, .h6
+  +get-line-height(h6)
+  +font-size($h6fontsize)
+  margin: 0
+  // text-transform: uppercase
+
+%notxt_trans
+  text-transform: none
+
+
+// TYPOGRAPHY ------------------------------
+
+p, ol, ul, th, td, dl, dd, address
+  margin-top: 0
+  margin-bottom: $blh * .5
+  +font-size($basefontsize)
+  +get-line-height(base)
+  font-weight: $normalfw
+
+div, section, article, aside
+  line-height: $blh
+  +font-size($basefontsize)
+  font-weight: $normalfw
+
+a
+  color: $black
+  cursor: pointer
+  
+  &:hover
+    text-decoration: underline
+
+menu, dir
+  margin: 0
+  padding: 0
+
+ul
+  margin-top: $blh * .5
+  margin-bottom: $blh * .5
+  
+li ul, li ol
+  margin-bottom: $blh * .5
+  +font-size($basefontsize)
+
+nav > ul, .nav > ul
+  list-style-type: none
+  // margin-left: 0
+
+%inline_list
+  list-style-type: none
+  margin-left: 0
+
+  & > li
+    // display: inline-block
+    +inline-block
+    // padding-left: $gutterwidth / 2
+    // padding-right: $gutterwidth / 2
+
+// blockquote
+
+blockquote
+  margin: 0 0 $blh 0
+  padding: $blh*.125 $blh*1.5
+  border-left: $blh*.3125 solid $dark_neutral
+  font-style: normal
+  font-family: $headingfont
+
+
+  %pull-right
+    float: right
+    background-color: transparent
+
+    p, small
+      text-align: right
+
+  small
+    &:before
+      content: "— "
+
+    &:after
+      content: ""
+
+  cite
+    font-style: normal
+    font-weight: $boldfw
+q
+  quotes: none
+
+blockquote:before, blockquote:after, q:before, q:after
+  content: ""
+  content: none
+
+dl, dd
+  margin-top: $blh * .5
+  margin-bottom: $blh * .5
+
+abbr[title]
+  border-bottom: 1px dotted $dark_neutral
+  cursor: help
+
+b, strong, .strong
+  font-weight: $semiboldfw
+
+dfn, .italic
+  font-style: italic
+
+ins
+  background-color: $light_neutral
+  color: $black
+  text-decoration: none
+
+mark
+  background-color:  $light_neutral
+  color: $black
+  font-style: italic
+  font-weight: $boldfw
+
+pre, code, kbd, samp
+  font-family: $codefont
+  +font-size($basefontsize / 1.25)
+  line-height: $blh
+  color: $dark_neutral
+
+pre
+  white-space: pre
+  white-space: pre-wrap
+  word-wrap: break-word
+
+sub, sup
+  position: relative
+  +font-size($basefontsize / 1.25)
+  line-height: 0
+  vertical-align: baselineheight
+
+sup
+  top: -.5em
+
+sub
+  bottom: -.25em
+
+.spaced
+  letter-spacing: 1px
+ 
+hr
+  clear: both
+  display: block
+  margin: $blh * 2 0
+  padding: 0
+  height: 1px
+  border: 0
+  border-top: 1px solid $dark_neutral
+
+
+// svg
+
+svg
+  width: inherit
+  height: inherit
+
+// img
+
+img
+  max-width: 100%
+  height: auto
+  border-width: 0
+  vertical-align: middle
+  -ms-interpolation-mode: bicubic
+
+%img-rounded
+  border-radius: $border_radius
+
+%img-polaroid
+  padding: $blh / 2
+  background-color: $white
+  border: 1px solid $dark_neutral
+  box-shadow: 0 1px 3px rgba(0,0,0,.1)
+
+%img-circle
+  border-radius: 500px
+
+figure
+  margin: 0
+  box-sizing: border-box
+  
+img
+  // margin-bottom: $blh / 4
+
+figcaption
+  display: block
+  font-weight: normal
+  +font-size($basefontsize * .875)
+  font-style: italic
+  color: $black
+
+// Buttons
+
+input[type='button']
+  @extend %btn
+
+input[type='submit']
+  @extend %btn-submit
+  
+input[type='reset']
+  @extend %btn-reset
+  
+// ADMIN TABLES
+
+/**
+ * Tables.
+ */
+ 
+table.sticky-table 
+  width: 100%
+  font-size: 0.923em
+  margin: 0 0 10px
+  border: 1px solid #bebfb9
+
+  td,th 
+    vertical-align: middle
+    padding: 8px 10px
+    border: 0
+    color: #000
+
+  tr.even, tr.odd 
+    border-width: 0 1px 0 1px
+    border-style: solid
+    border-color: #bebfb9
+    background: #f3f4ee
+
+  tr.odd 
+    background: #fff
+
+  tr.drag 
+    background: #fe7
+
+  tr.drag-previous 
+    background: #ffb
+
+  th 
+    text-transform: uppercase
+    background: #e1e2dc
+    font-weight: normal
+    border-width: 1px
+    border-style: solid
+    border-color: #bebfb9
+    padding: 3px 10px
+
+  th.select-all 
+    width: 1px
+
+  th.active 
+    background: #bdbeb9
+
+  th a 
+    display: block
+    position: relative
+
+  th.active a 
+    padding: 0 25px 0 0 /* LTR */
+
+  th.active img 
+    position: absolute
+    top: 3px
+    right: 3px
+
+  td.active 
+    background: #e9e9dd
+
+  tr.odd td.active 
+    background: #f3f4ee
+
+  tr.selected td.active tr.selected td 
+    background: #ffc
+    border-color: #eeb
+  
+  td a
+    text-decoration: underline
+
+table.system-status-report tr 
+  border-bottom: 1px solid #ccc
+
+table.system-status-report tr.ok 
+  color: #255b1e
+  background-color: #e5ffe2
+
+table.system-status-report tr.info 
+  color: #040f37
+  background-color: #bdf
+
+table.system-status-report tr.warning 
+  color: #840
+  background-color: #fffce5
+
+table.system-status-report tr.error 
+  color: #8c2e0b
+  background-color: #fef5f1
+
+/**
+ * Exception for webkit bug with the right border of the last cell
+ * in some table.sticky-tables, since it's webkit only, we can use :last-child
+ */
+ 
+table.sticky-table tr td:last-child 
+  border-right: 1px solid #bebfb9 /* LTR */
